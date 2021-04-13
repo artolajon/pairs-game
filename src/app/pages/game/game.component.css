@@ -27,3 +27,6 @@
   position: fixed;
   padding: 1rem;
 }
+.options>button{
+  margin-right: 10px;
+}

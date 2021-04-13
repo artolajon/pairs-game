@@ -136,6 +136,10 @@ export class GameComponent implements OnInit {
     }
   }
 
+  hint(){
+
+  }
+
 
 
 }

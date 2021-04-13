@@ -36,7 +36,7 @@ export class GameComponent implements OnInit {
 
     if (this.selected && this.options){
       let option = this.options.find(p=> p == index);
-      if (option){
+      if (option != null){
         this.list[this.selected].visible=false;
         this.list[option].visible=false;
       }
@@ -102,6 +102,12 @@ export class GameComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  addPairs(){
+    this.list.filter(c=> c.visible).forEach(cell => {
+      this.list.push(new Cell(cell.type))
+    });
   }
 
 

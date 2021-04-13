@@ -1,3 +1,11 @@
+<div class="options">
+  <button (click)="addPairs()">
+    Add more
+  </button>
+</div>
+
+
+
 <div id="board">
   <div *ngFor="let cell of list; index as i;" (click)="selectCell(i)" [class]="{'selected': i == selected, 'hidden': !cell.visible}">
     {{cell.type}}

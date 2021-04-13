@@ -1,7 +1,7 @@
 #board{
   display: grid;
   grid-template-columns: repeat(9,  calc(100% / 9));
-
+  padding-top: 4rem;
 }
 
 #board>div{
@@ -10,7 +10,7 @@
   align-items: center;
   height: 2rem;
   cursor: pointer;
-  border-radius: 10px;
+  border-bottom: 1px grey solid;
 }
 
 .selected {
@@ -20,6 +20,11 @@
 }
 
 .hidden{
-  opacity: .7;
-  text-decoration: line-through;
+  background-color: darkgray;
+  color: darkgray;
+}
+
+.options{
+  position: fixed;
+  padding: 1rem;
 }

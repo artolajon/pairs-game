@@ -2,7 +2,7 @@
   <button (click)="addPairs()">
     Add more
   </button>
-  <button (click)="hint()">
+  <button (click)="giveHint()">
     Hint
   </button>
   <button (click)="startGame()">
@@ -13,7 +13,12 @@
 
 
 <div id="board">
-  <div *ngFor="let cell of list; index as i;" (click)="selectCell(i)" [class]="{'selected': i == selected, 'hidden': !cell.visible}">
+  <div *ngFor="let cell of list; index as i;" (click)="selectCell(i)" [class]="
+  {
+    'selected': i == selected,
+    'hidden': !cell.visible,
+    'hint': hint.includes(i)
+  }">
     {{ cell.visible ? cell.type : null }}
   </div>
 </div>

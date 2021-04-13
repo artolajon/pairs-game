@@ -30,3 +30,6 @@
 .options>button{
   margin-right: 10px;
 }
+.hint{
+  outline: 2px red solid;
+}

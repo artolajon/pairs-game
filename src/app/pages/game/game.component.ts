@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Cell } from 'src/app/models/cell';
 
@@ -10,6 +11,7 @@ const LINE_LENGTH = 9;
 export class GameComponent implements OnInit {
 
   list=Array<Cell>();
+  hint = Array<number>();
 
   selected?: number;
   options?: number[];
@@ -32,10 +34,11 @@ export class GameComponent implements OnInit {
   }
 
   selectCell(index: number){
+    this.hint=[];
     if (!this.list[index].visible)
       return;
 
-    if (this.selected && this.options){
+    if (this.selected != null && this.options){
       let option = this.options.find(p=> p == index);
       if (option != null){
         this.list[this.selected].visible=false;
@@ -54,57 +57,85 @@ export class GameComponent implements OnInit {
 
   optionsAround(index: number){
     this.options =new Array<number>();
-    this.checkUp(index);
-    this.checkBack(index);
-    this.checkNext(index);
-    this.checkDown(index);
-  }
-
-  checkUp(selected: number){
-    for(let i = selected - LINE_LENGTH; i >= 0; i -= LINE_LENGTH){
-      let done = this.check(selected, i);
-      if (done)
-        break;
+    let opcion = this.searchSameTypeUp(index);
+    if (opcion>=0){
+      this.options.push(opcion);
+    }
+    opcion = this.searchSameTypeBackward(index);
+    if (opcion>=0){
+      this.options.push(opcion);
+    }
+    opcion = this.searchSameTypeForward(index);
+    if (opcion>=0){
+      this.options.push(opcion);
+    }
+    opcion = this.searchSameTypeDown(index);
+    if (opcion>=0){
+      this.options.push(opcion);
     }
   }
 
+  searchSameTypeUp(selected: number): number{
+    let selectedCell = this.list[selected];
+    let loopStart = selected - LINE_LENGTH;
+    let isForward = false;
+    let step = -LINE_LENGTH;
 
-  checkBack(selected: number){
-    for(let i = selected - 1; i >= 0; i--){
-      let done = this.check(selected, i);
-      if (done)
-        break;
-    }
+    let index = this.searchSameType(selectedCell, loopStart, isForward, step);
+    return index;
   }
 
-  checkNext(selected: number){
-    for(let i = selected + 1; i < this.list.length; i++){
-      let done = this.check(selected, i);
-      if (done)
-        break;
-    }
+
+  searchSameTypeBackward(selected: number): number{
+    let selectedCell = this.list[selected];
+    let loopStart = selected - 1;
+    let isForward = false;
+    let step = -1;
+
+    let index = this.searchSameType(selectedCell, loopStart, isForward, step);
+    return index;
+
   }
 
-  checkDown(selected: number){
-    for(let i = selected + LINE_LENGTH; i < this.list.length; i += LINE_LENGTH){
-      let done = this.check(selected, i);
-      if (done)
-        break;
-    }
+  searchSameTypeForward(selected: number): number{
+    let selectedCell = this.list[selected];
+    let loopStart = selected + 1;
+    let isForward = true;
+    let step = 1;
+
+    let index = this.searchSameType(selectedCell, loopStart, isForward, step);
+    return index;
   }
 
-  check(principal: number, secondary: number): boolean{
-    let cell1= this.list[principal]
-    let cell2 = this.list[secondary];
+  searchSameTypeDown(selected: number): number{
 
-    if (cell2.visible){
-      if (cell1.type == cell2.type){
-        this.options?.push(secondary);
+    let selectedCell = this.list[selected];
+    let loopStart = selected + LINE_LENGTH;
+    let isForward = true;
+    let step = LINE_LENGTH;
+
+    let index = this.searchSameType(selectedCell, loopStart, isForward, step);
+    return index;
+  }
+
+  searchSameType(selectedCell: Cell, loopStart: number, isForward: boolean, step: number): number{
+    let i = loopStart;
+
+    while(isForward? i < this.list.length : i >= 0){
+      let cell2 = this.list[i];
+
+      if (cell2.visible){
+        if (selectedCell.type == cell2.type){
+          return i;
+        }
+        return -1;
       }
-      return true;
+
+      i = i + step;
     }
-    return false;
+    return -1;
   }
+
 
   addPairs(){
     this.list.filter(c=> c.visible).forEach(cell => {
@@ -136,8 +167,21 @@ export class GameComponent implements OnInit {
     }
   }
 
-  hint(){
-
+  giveHint(){
+    for (let i = 0; i < this.list.length; i++) {
+      if(this.list[i].visible){
+        let option = this.searchSameTypeForward(i);
+        if (option>=0){
+          this.hint = [i, option];
+          break;
+        }
+        option = this.searchSameTypeDown(i);
+        if (option>=0){
+          this.hint = [i, option];
+          break;
+        }
+      }
+    }
   }
 
 

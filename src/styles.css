@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: PressStart2P;
+  src: url(/assets/fonts/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+@font-face {
+  font-family: Quicksand;
+  src: url(/assets/fonts/Quicksand/Quicksand-VariableFont_wght.ttf);
+}
+body{
+  margin: 0;
+}
+*{
+  font-family: Quicksand;
+}
+h1, h2{
+  font-family: PressStart2P;
+  white-space: nowrap;
+}
+
+
 button{
   padding: .5rem 1rem;
   border: 1px solid grey ;

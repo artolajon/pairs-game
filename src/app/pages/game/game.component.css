@@ -27,13 +27,12 @@
 
 .options{
   position: fixed;
+  display: flex;
+  align-items: center;
   padding: 1rem;
 }
 .options>button{
   margin-right: 10px;
-}
-.flex-end{
-  margin-left: auto!important;
 }
 
 .hint{

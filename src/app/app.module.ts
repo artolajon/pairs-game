@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './pages/game/game.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { HowToPlayComponent } from './pages/how-to-play/how-to-play.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HowToPlayComponent } from './pages/how-to-play/how-to-play.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

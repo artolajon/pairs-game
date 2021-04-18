@@ -1,15 +1,15 @@
 <div class="options">
   <button (click)="addPairs()">
-    Add more
+    <fa-icon [icon]="['fas','plus']"></fa-icon>
   </button>
   <button (click)="giveHint()" class="secondary">
-    Hint
+    <fa-icon [icon]="['fas','question']"></fa-icon>
   </button>
   <button (click)="startGame()" class="secondary">
-    Reset
+    <fa-icon [icon]="['fas','undo']"></fa-icon>
   </button>
-  <button [routerLink]="['/']" class="secondary flex-end">
-    Go back
+  <button [routerLink]="['/']" class="secondary">
+    <fa-icon [icon]="['fas','home']"></fa-icon>
   </button>
 </div>
 

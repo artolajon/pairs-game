@@ -32,6 +32,10 @@
 .options>button{
   margin-right: 10px;
 }
+.flex-end{
+  margin-left: auto!important;
+}
+
 .hint{
   outline: 2px red solid;
 }

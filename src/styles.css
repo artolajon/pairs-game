@@ -17,3 +17,6 @@ button:active{
 button:disabled{
   background-color: lightgray;
 }
+button.secondary{
+  font-size: .75rem;
+}

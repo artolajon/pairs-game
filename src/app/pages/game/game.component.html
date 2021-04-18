@@ -2,11 +2,14 @@
   <button (click)="addPairs()">
     Add more
   </button>
-  <button (click)="giveHint()">
+  <button (click)="giveHint()" class="secondary">
     Hint
   </button>
-  <button (click)="startGame()">
+  <button (click)="startGame()" class="secondary">
     Reset
+  </button>
+  <button [routerLink]="['/']" class="secondary flex-end">
+    Go back
   </button>
 </div>
 

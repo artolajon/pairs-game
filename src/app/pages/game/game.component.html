@@ -17,7 +17,8 @@
   {
     'selected': i == selected,
     'hidden': !cell.visible,
-    'hint': hint.includes(i)
+    'hint': hint.includes(i),
+    'being-deleted': cell.isBeingDeleted
   }">
     {{ cell.visible ? cell.type : null }}
   </div>

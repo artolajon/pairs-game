@@ -163,7 +163,12 @@ export class GameComponent implements OnInit {
     let lineEnd = lineStart + LINE_LENGTH;
     let line = this.list.slice(lineStart, lineEnd);
     if (!line.some(c=> c.visible)){
-      this.list.splice(lineStart, LINE_LENGTH);
+
+      line.forEach(cell => cell.isBeingDeleted = true);
+      setTimeout(() => {
+        this.list.splice(lineStart, LINE_LENGTH);
+      }, 500);
+
     }
   }
 

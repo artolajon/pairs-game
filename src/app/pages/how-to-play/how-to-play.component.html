@@ -1,0 +1,43 @@
+<div class="centered box">
+  <div class="head center-text">
+    <h1>
+      Pairs Game
+    </h1>
+    <p>Try to hide all the numbers</p>
+  </div>
+  <div class="body">
+    <h2>Game basics</h2>
+    <p>There is a list of random number that you need to clear.</p>
+    <h2>How to clear</h2>
+    <p>To clear the list you need to find cells with the same number.</p>
+    <p>The cells need to be one next to the other.</p>
+    <h2>Valid moves</h2>
+    <ul>
+      <li>
+        <div>
+          Forward, backward, up or down
+        </div>
+        <img src="/assets/img/direction-movement.png">
+      </li>
+      <li>
+        <div>
+        Ignoring  hidden ones
+       </div>
+        <img src="/assets/img/ignore-hidden.png">
+      </li>
+      <li>
+        <div>Using the next row</div>
+        <img src="/assets/img/next-row.png">
+      </li>
+    </ul>
+    <h2>Once there aren´t more pairs</h2>
+    <p>Once there aren´t more pairs, you can add more numbers pressing the "Add more" button</p>
+    <h2>When does it finish?</h2>
+    <p>Once you cleared all the list</p>
+
+    <div class="options">
+      <button [routerLink]="['/game']" > Play game </button>
+      <button [routerLink]="['/']" class="secondary" > Return </button>
+    </div>
+  </div>
+</div>

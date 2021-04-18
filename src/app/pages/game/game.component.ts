@@ -1,8 +1,8 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Constants } from 'src/app/helpers/constants';
 import { Cell } from 'src/app/models/cell';
 
-const LINE_LENGTH = 9;
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -77,9 +77,9 @@ export class GameComponent implements OnInit {
 
   searchSameTypeUp(selected: number): number{
     let selectedCell = this.list[selected];
-    let loopStart = selected - LINE_LENGTH;
+    let loopStart = selected - Constants.lineLength;
     let isForward = false;
-    let step = -LINE_LENGTH;
+    let step = -Constants.lineLength;
 
     let index = this.searchSameType(selectedCell, loopStart, isForward, step);
     return index;
@@ -110,9 +110,9 @@ export class GameComponent implements OnInit {
   searchSameTypeDown(selected: number): number{
 
     let selectedCell = this.list[selected];
-    let loopStart = selected + LINE_LENGTH;
+    let loopStart = selected + Constants.lineLength;
     let isForward = true;
-    let step = LINE_LENGTH;
+    let step = Constants.lineLength;
 
     let index = this.searchSameType(selectedCell, loopStart, isForward, step);
     return index;
@@ -145,8 +145,8 @@ export class GameComponent implements OnInit {
 
 
   checkLines(cell1: number, cell2: number){
-    let line1Start = cell1 - cell1 % LINE_LENGTH;
-    let line2Start = cell2 - cell2 % LINE_LENGTH;
+    let line1Start = cell1 - cell1 % Constants.lineLength;
+    let line2Start = cell2 - cell2 % Constants.lineLength;
     if (line1Start == line2Start){
       this.checkLine(line1Start);
     }else{
@@ -160,14 +160,14 @@ export class GameComponent implements OnInit {
 
 
   checkLine(lineStart: number){
-    let lineEnd = lineStart + LINE_LENGTH;
+    let lineEnd = lineStart + Constants.lineLength;
     let line = this.list.slice(lineStart, lineEnd);
     if (!line.some(c=> c.visible)){
 
       line.forEach(cell => cell.isBeingDeleted = true);
       setTimeout(() => {
-        this.list.splice(lineStart, LINE_LENGTH);
-      }, 500);
+        this.list.splice(lineStart, Constants.lineLength);
+      }, Constants.fadeOutDuration);
 
     }
   }

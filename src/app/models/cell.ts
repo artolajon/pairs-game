@@ -1,3 +1,5 @@
+import { Constants } from "../helpers/constants";
+
 export class Cell {
   type: number = 0;
   visible: boolean = true;
@@ -6,7 +8,7 @@ export class Cell {
     if (type != undefined){
       this.type = type;
     }else{
-      this.type = Math.floor(Math.random() * 5);
+      this.type = Math.floor(Math.random() * Constants.types);
     }
 
   }

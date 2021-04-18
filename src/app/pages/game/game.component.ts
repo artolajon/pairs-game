@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Constants } from 'src/app/helpers/constants';
 import { Cell } from 'src/app/models/cell';
 
@@ -16,17 +17,29 @@ export class GameComponent implements OnInit {
   selected?: number;
   options?: number[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.startGame();
   }
 
-  startGame(){
-    this.resetBoard();
+  resetBoard(){
+    var r = confirm("You want to restart the game?");
+    if (r == true) {
+      this.startGame();
+    }
+
   }
 
-  resetBoard(){
+  returnToMenu(){
+    var r = confirm("You want to return to the menu?");
+    if (r == true) {
+      this.router.navigate(["/"]);
+    }
+
+  }
+
+  startGame(){
     this.list = Array<Cell>();
     for (let i = 0; i < 20; i++) {
       this.list.push(new Cell());

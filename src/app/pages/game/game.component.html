@@ -5,10 +5,10 @@
   <button (click)="giveHint()" class="secondary">
     <fa-icon [icon]="['fas','question']"></fa-icon>
   </button>
-  <button (click)="startGame()" class="secondary">
+  <button (click)="resetBoard()" class="secondary">
     <fa-icon [icon]="['fas','undo']"></fa-icon>
   </button>
-  <button [routerLink]="['/']" class="secondary">
+  <button (click)="returnToMenu()" class="secondary">
     <fa-icon [icon]="['fas','home']"></fa-icon>
   </button>
 </div>

@@ -1,8 +1,14 @@
 .options{
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .options>.secondary{
   margin-top: .5rem;
+}
+@media (min-width: 600px) {
+  .for-mobile{
+    display: none;
+  }
 }

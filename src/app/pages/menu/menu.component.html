@@ -6,9 +6,15 @@
     <p>Try to hide all the numbers</p>
   </div>
   <div class="body">
-
+    <div class="for-mobile">
+      <h2>
+        Options
+      </h2>
+      <input type="checkbox" [(ngModel)]="leftHanded" id="leftHandCheck" (change)="saveChanges()">
+      <label for="leftHandCheck"> Left handed</label>
+    </div>
     <div class="options">
-      <button [routerLink]="['/game']" > Play game </button>
+      <button [routerLink]="['/game']"> Play game </button>
       <button [routerLink]="['/how-to-play']" class="secondary" > How to play </button>
     </div>
   </div>

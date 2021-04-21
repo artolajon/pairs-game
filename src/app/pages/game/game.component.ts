@@ -17,10 +17,12 @@ export class GameComponent implements OnInit {
 
   selected?: number;
   options?: number[];
+  leftHanded = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.leftHanded = localStorage.getItem(Constants.handConfig) == "1";
     this.startGame();
   }
 

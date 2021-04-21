@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(9,  calc(100% / 9));
   padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 #board>div{
@@ -27,10 +28,26 @@
 
 .options{
   position: fixed;
+
   display: flex;
   align-items: center;
   padding: 1rem;
 }
+
+@media (max-width: 600px) {
+  .options{
+    bottom: 0;
+  }
+  .options:not(.left-hand){
+    left: 0;
+  }
+  .options:not(.left-hand){
+    right: 0;
+    flex-direction: row-reverse;
+  }
+}
+
+
 .options>button{
   margin-right: 10px;
 }

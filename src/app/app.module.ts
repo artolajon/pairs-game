@@ -7,6 +7,7 @@ import { GameComponent } from './pages/game/game.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { HowToPlayComponent } from './pages/how-to-play/how-to-play.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-<div class="options">
+<div class="options" [ngClass]="{'left-hand': leftHanded}">
   <button (click)="addPairs()">
     <fa-icon [icon]="['fas','plus']"></fa-icon>
   </button>

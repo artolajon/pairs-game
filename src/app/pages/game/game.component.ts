@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
 
   list=Array<Cell>();
   hint = Array<number>();
+  isFinished = false;
 
   selected?: number;
   options?: number[];
@@ -23,23 +24,29 @@ export class GameComponent implements OnInit {
     this.startGame();
   }
 
-  resetBoard(){
-    var r = confirm("You want to restart the game?");
-    if (r == true) {
-      this.startGame();
+  resetBoard(forced: boolean = false){
+    if (!forced){
+      let r = confirm("Do you want to restart the game?");
+      if (r == false) {
+        return;
+      }
     }
-
+    this.startGame();
   }
 
-  returnToMenu(){
-    var r = confirm("You want to return to the menu?");
-    if (r == true) {
-      this.router.navigate(["/"]);
+  returnToMenu(forced: boolean = false){
+    if (!forced){
+      let r = confirm("Do you want to return to the menu?");
+      if (r == false) {
+        return;
+      }
     }
+    this.router.navigate(["/"]);
 
   }
 
   startGame(){
+    this.isFinished = false;
     this.list = Array<Cell>();
     for (let i = 0; i < 20; i++) {
       this.list.push(new Cell());
@@ -181,7 +188,14 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.list.splice(lineStart, Constants.lineLength);
       }, Constants.fadeOutDuration);
+      this.checkIfIsFinished();
 
+    }
+  }
+
+  checkIfIsFinished(){
+    if (!this.list.some(c=> c.visible)){
+      this.isFinished=true;
     }
   }
 

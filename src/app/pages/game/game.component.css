@@ -35,6 +35,11 @@
   margin-right: 10px;
 }
 
+.body{
+  justify-content: center;
+  display: flex;
+}
+
 .hint{
   outline: 2px red solid;
 }

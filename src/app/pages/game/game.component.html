@@ -26,3 +26,17 @@
     {{ cell.visible ? cell.type : null }}
   </div>
 </div>
+
+<div class="centered box" *ngIf="isFinished">
+  <div class="head">
+    <h1>
+      Game solved
+    </h1>
+  </div>
+  <div class="body">
+    <div class="options center">
+      <button (click)="resetBoard(true)" > <fa-icon [icon]="['fas','undo']"></fa-icon> Restart </button>
+      <button (click)="returnToMenu(true)" class="secondary" > <fa-icon [icon]="['fas','home']"></fa-icon> </button>
+    </div>
+  </div>
+</div>

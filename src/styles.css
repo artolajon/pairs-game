@@ -40,3 +40,22 @@ button:disabled{
 button.secondary{
   font-size: .75rem;
 }
+
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.box{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.box>*{
+  margin-bottom: 1.5rem;
+}
+.center-text{
+  text-align: center;
+}

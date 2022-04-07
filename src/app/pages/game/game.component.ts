@@ -170,8 +170,10 @@ export class GameComponent implements OnInit {
     let line1Start = cell1 - cell1 % Constants.lineLength;
     let line2Start = cell2 - cell2 % Constants.lineLength;
     if (line1Start == line2Start){
+      //same line
       this.checkLine(line1Start);
     }else{
+      //diferent line
       let smallest = line1Start < line2Start ? line1Start : line2Start;
       let biggest = line1Start > line2Start ? line1Start : line2Start;
       this.checkLine(biggest);
